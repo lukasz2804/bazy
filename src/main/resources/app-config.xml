@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="personService" class="com.cgm.academy.person.service.PersonService">
+        <property name="personRepository" ref="personRepository"/>
+    </bean>
+    <bean id="addressService" class="com.cgm.academy.address.service.AddressService">
+        <property name="addressRepository" ref="addressRepository"/>
+    </bean>
+
+    <bean id="personController" class="com.cgm.academy.person.controller.PersonController">
+        <constructor-arg ref="personService"/>
+    </bean>
+
+    <bean id="addressController" class="com.cgm.academy.address.controller.AddressController">
+        <constructor-arg ref="personService"/>
+    </bean>
+
+</beans>
